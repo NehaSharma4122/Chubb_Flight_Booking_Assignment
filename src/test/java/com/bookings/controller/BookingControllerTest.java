@@ -47,7 +47,6 @@ class BookingControllerTest {
         request.setMealpref(MealType.VEG);
         request.setSeatNumber("12A,12B");
         
-        // Create passenger list
         Passengers passenger1 = new Passengers();
         passenger1.setName("John Doe");
         passenger1.setGender("MALE");
@@ -66,21 +65,19 @@ class BookingControllerTest {
         Tickets ticket = new Tickets();
         ticket.setPnr("ABC12345");
         
-        // Create user
         User user = new User();
         user.setId(1L);
         user.setName("John Doe");
         user.setEmail("john.doe@example.com");
         ticket.setUser(user);
         
-        // Create flight
         Flight flight = new Flight();
         flight.setFlight_id(1L);
         flight.setFlightNumber("AI101");
         flight.setFromPlace("DEL");
         flight.setToPlace("BOM");
-        flight.setDeparture(LocalDateTime.of(2025, 2, 15, 8, 0));
-        flight.setArrival(LocalDateTime.of(2025, 2, 15, 10, 0));
+        flight.setDeparture(LocalDateTime.of(2026, 2, 15, 8, 0));
+        flight.setArrival(LocalDateTime.of(2026, 2, 15, 10, 0));
         flight.setPrice(4500.0);
         ticket.setFlight(flight);
         
@@ -117,7 +114,7 @@ class BookingControllerTest {
 
     @Test
     void bookFlight_ValidationError() throws Exception {
-        BookingRequest request = new BookingRequest(); // Empty request
+        BookingRequest request = new BookingRequest(); 
         
         mockMvc.perform(post("/api/v1.0/flight/booking/1")
                 .contentType(MediaType.APPLICATION_JSON)

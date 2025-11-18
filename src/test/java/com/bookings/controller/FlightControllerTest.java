@@ -42,8 +42,8 @@ class FlightControllerTest {
         flight.setFlightNumber("AI101");
         flight.setFromPlace("DEL");
         flight.setToPlace("BOM");
-        flight.setDeparture(LocalDateTime.of(2025, 2, 15, 8, 0));
-        flight.setArrival(LocalDateTime.of(2025, 2, 15, 10, 0));
+        flight.setDeparture(LocalDateTime.of(2026, 2, 15, 8, 0));
+        flight.setArrival(LocalDateTime.of(2026, 2, 15, 10, 0));
         flight.setPrice(4500.0);
         flight.setAvailableSeats(150);
         flight.setMealType(com.bookings.entity.MealType.BOTH);
@@ -55,7 +55,7 @@ class FlightControllerTest {
         SearchRequests request = new SearchRequests();
         request.setFromPlace("DEL");
         request.setToPlace("BOM");
-        request.setTravelDate(LocalDate.of(2025, 2, 15));
+        request.setTravelDate(LocalDate.of(2026, 2, 15));
         request.setTripType(Trip.ONE_WAY);
         return request;
     }
@@ -81,7 +81,7 @@ class FlightControllerTest {
 
     @Test
     void addFlight_ValidationError() throws Exception {
-        Flight flight = new Flight(); // Empty flight - should fail validation
+        Flight flight = new Flight(); 
         
         mockMvc.perform(post("/api/v1.0/flight/airline/inventory/add")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -126,7 +126,7 @@ class FlightControllerTest {
 
     @Test
     void searchFlights_ValidationError() throws Exception {
-        SearchRequests searchRequest = new SearchRequests(); // Empty request
+        SearchRequests searchRequest = new SearchRequests(); 
         
         mockMvc.perform(post("/api/v1.0/flight/search")
                 .contentType(MediaType.APPLICATION_JSON)
